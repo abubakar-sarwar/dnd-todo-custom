@@ -9,37 +9,41 @@ const TodoAppPage = () => {
 
   return (
     <div className="h-screen w-full bg-neutral-900 text-neutral-50">
-      <div className="flex h-full w-full gap-5 px-5 py-10">
+      <div className="fixed top-0 left-0 h-full p-4 w-[250px] bg-neutral-800 ">
         <ColumnProjects projects={projects} columnType="projects" />
-        <Column
-          title="Backlog"
-          column="backlog"
-          headingColor="text-neutral-500"
-          columnType="todo"
-          cards={cards}
-        />
-        <Column
-          title="TODO"
-          column="todo"
-          headingColor="text-yellow-200"
-          columnType="todo"
-          cards={cards}
-        />
-        <Column
-          title="In progress"
-          column="doing"
-          headingColor="text-blue-200"
-          columnType="todo"
-          cards={cards}
-        />
-        <Column
-          title="Complete"
-          column="done"
-          headingColor="text-emerald-200"
-          columnType="todo"
-          cards={cards}
-        />
       </div>
+      <section className="ml-[260px]">
+        <div className="flex h-full w-full gap-5 px-4 py-10">
+          <Column
+            title="Backlog"
+            column="backlog"
+            headingColor="text-neutral-500"
+            columnType="todo"
+            cards={cards}
+          />
+          <Column
+            title="TODO"
+            column="todo"
+            headingColor="text-yellow-200"
+            columnType="todo"
+            cards={cards}
+          />
+          <Column
+            title="In progress"
+            column="doing"
+            headingColor="text-blue-200"
+            columnType="todo"
+            cards={cards}
+          />
+          <Column
+            title="Complete"
+            column="done"
+            headingColor="text-emerald-200"
+            columnType="todo"
+            cards={cards}
+          />
+        </div>
+      </section>
     </div>
   );
 };

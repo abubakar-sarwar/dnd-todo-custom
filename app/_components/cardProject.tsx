@@ -1,16 +1,18 @@
 "use client";
 import { FormEvent, useState } from "react";
-import { CardProjectProps, CardType } from "@/types";
+import { CardProjectProps, CardType, ProjectType } from "@/types";
 import DropIndicator from "./dropIndicator";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib";
 import {
   setCardEditingId,
   setCards,
+  setProjects,
   setSelectedProjectId,
 } from "@/lib/slices/Allslices";
 import { FiEdit3 } from "react-icons/fi";
 import ActionsCard from "./actionsCard";
+import ActionsProjectCard from "./actionsProjectCard";
 
 const CardProject = ({
   id,
@@ -22,8 +24,11 @@ const CardProject = ({
   const [text, setText] = useState<string>(project);
   const [isdragging, setIsdragging] = useState<boolean>(false);
 
-  const cards = useSelector((state: RootState) => state.cards);
+  const projects = useSelector((state: RootState) => state.projects);
   const cardEditingId = useSelector((state: RootState) => state.cardEditingId);
+  const selectedProjectId = useSelector(
+    (state: RootState) => state.selectedProjectId
+  );
   const isEditing = cardEditingId === id;
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -31,13 +36,13 @@ const CardProject = ({
 
     if (!text.trim().length) return;
 
-    const newCards: CardType[] = cards.map((item) => {
+    const newProjects: ProjectType[] = projects.map((item) => {
       if (item?.id === id) {
         return { ...item, project: text };
       } else return item;
     });
 
-    dispatch(setCards(newCards));
+    dispatch(setProjects(newProjects));
 
     dispatch(setCardEditingId(""));
   };
@@ -63,22 +68,22 @@ const CardProject = ({
         }}
         onDragEnd={() => setIsdragging(false)}
         onClick={() => dispatch(setSelectedProjectId(id))}
-        className={`relative cursor-grab rounded border border-neutral-700 bg-neutral-800 group active:cursor-grabbing ${
+        className={`relative cursor-pointer rounded border border-neutral-700 bg-neutral-800 group active:cursor-grabbing ${
           isEditing ? "" : "p-3"
-        }`}
+        } ${selectedProjectId === id ? "border-violet-400" : ""}`}
       >
-        {!isdragging && <ActionsCard id={id} />}
+        {!isdragging && <ActionsProjectCard id={id} />}
         {isEditing ? (
           <form
             onSubmit={handleSubmit}
             className="p-3 border-violet-400 bg-violet-400/20"
           >
-            <textarea
+            <input
               onChange={(e) => setText(e.target.value)}
               autoFocus
               value={text}
               placeholder="Add new task..."
-              className="min-h-20 w-full rounded text-sm bg-transparent text-neutral-50 placeholder-violet-300 focus:outline-0"
+              className="w-full rounded text-sm bg-transparent text-neutral-50 placeholder-violet-300 focus:outline-0"
             />
             <div className="mt-1.5 flex items-center justify-end gap-1.5">
               <button

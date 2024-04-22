@@ -114,10 +114,10 @@ const ColumnProjects = ({ columnType, projects }: ColumnProjectProps) => {
   };
 
   return (
-    <div className="min-w-56 w-full shrink grow">
+    <div>
       <div className="mb-3 flex items-center justify-between">
-        <h3 className="uppercase font-medium text-neutral-500">Projects</h3>
-        <span className="rounded text-sm text-neutral-400">
+        <h3 className="uppercase font-medium text-violet-400">Projects</h3>
+        <span className="rounded text-sm font-bold text-violet-400">
           {projects.length}
         </span>
       </div>
@@ -132,7 +132,6 @@ const ColumnProjects = ({ columnType, projects }: ColumnProjectProps) => {
         {projects.map((c) => {
           return (
             <CardProject key={c.id} {...c} handleDragStart={handleDragStart} />
-            // <p key={c.id}>{c?.project}</p>
           );
         })}
         <DropIndicator beforeId={null} column="projects" />

@@ -41,7 +41,7 @@ const AddProject = () => {
           <textarea
             onChange={(e) => setText(e.target.value)}
             autoFocus
-            placeholder="Add new task..."
+            placeholder="Add new project..."
             className="w-full rounded border border-violet-400 bg-violet-400/20 p-3 text-sm text-neutral-50 placeholder-violet-300 focus:outline-0"
           />
           <div className="mt-1.5 flex items-center justify-end gap-1.5">
@@ -65,7 +65,7 @@ const AddProject = () => {
           onClick={() => setAdding(true)}
           className="flex w-full justify-end items-center gap-1.5 py-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-50"
         >
-          <span>Add card</span>
+          <span>Add project</span>
           <FiPlus />
         </button>
       )}
