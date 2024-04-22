@@ -22,6 +22,7 @@ const Card = ({
 }: CardProps) => {
   const dispatch = useDispatch();
   const [text, setText] = useState<string>(title);
+  const [isdragging, setIsdragging] = useState<boolean>(false);
 
   const cards = useSelector((state: RootState) => state.cards);
   const cardEditingId = useSelector((state: RootState) => state.cardEditingId);
@@ -58,7 +59,10 @@ const Card = ({
       <DropIndicator beforeId={id} column={column} />
       <div
         draggable="true"
-        onDragStart={(e) => handleDragStart(e, { title, id, column })}
+        onDragStart={(e) => {
+          setIsdragging(true);
+          handleDragStart(e, { title, id, column });
+        }}
         className={`relative cursor-grab rounded border border-neutral-700 group active:cursor-grabbing ${
           isEditing ? "" : "p-3"
         } ${
@@ -69,7 +73,7 @@ const Card = ({
             : "bg-neutral-800"
         }`}
       >
-        <ActionsCard id={id} />
+        {!isdragging && <ActionsCard id={id} />}
         {isEditing ? (
           <form
             onSubmit={handleSubmit}

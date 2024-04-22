@@ -87,6 +87,7 @@ const CardProject = ({
             />
             <div className="mt-1.5 flex items-center justify-end gap-1.5">
               <button
+                type="button"
                 onClick={() => dispatch(setCardEditingId(""))}
                 className="px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-50"
               >

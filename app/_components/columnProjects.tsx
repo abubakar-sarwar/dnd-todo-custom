@@ -114,28 +114,34 @@ const ColumnProjects = ({ columnType, projects }: ColumnProjectProps) => {
   };
 
   return (
-    <div>
-      <div className="mb-3 flex items-center justify-between">
+    <div className="flex flex-col h-full">
+      <div className="p-4 pb-2 flex items-center justify-between">
         <h3 className="uppercase font-medium text-violet-400">Projects</h3>
         <span className="rounded text-sm font-bold text-violet-400">
           {projects.length}
         </span>
       </div>
-      <div
-        onDrop={handleDragEnd}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        className={`h-full w-full transition-colors ${
-          active ? "bg-neutral-800/50" : "bg-neutral-800/0"
-        }`}
-      >
-        {projects.map((c) => {
-          return (
-            <CardProject key={c.id} {...c} handleDragStart={handleDragStart} />
-          );
-        })}
-        <DropIndicator beforeId={null} column="projects" />
-        <AddProject />
+      <div className="px-4 h-full overflow-y-auto">
+        <div
+          onDrop={handleDragEnd}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          className={`h-full w-full transition-colors m-auto ${
+            active ? "bg-neutral-800/50" : "bg-neutral-800/0"
+          }`}
+        >
+          {projects.map((c) => {
+            return (
+              <CardProject
+                key={c.id}
+                {...c}
+                handleDragStart={handleDragStart}
+              />
+            );
+          })}
+          <DropIndicator beforeId={null} column="projects" />
+          <AddProject />
+        </div>
       </div>
     </div>
   );

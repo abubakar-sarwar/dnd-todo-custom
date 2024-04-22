@@ -5,8 +5,9 @@ import {
   setCards,
   setDropDown,
   setDropDownClose,
+  setProjects,
 } from "@/lib/slices/Allslices";
-import { CardActionProps, CardType, PriorityType } from "@/types";
+import { CardActionProps, CardType, PriorityType, ProjectType } from "@/types";
 import { useEffect, useRef } from "react";
 import {
   FcHighPriority,
@@ -20,7 +21,7 @@ const ActionsProjectCard = ({ id }: CardActionProps) => {
   const dispatch = useDispatch();
   const menuRef = useRef<HTMLUListElement | null>(null);
   const btnRef = useRef<HTMLButtonElement | null>(null);
-  const cards = useSelector((state: RootState) => state.cards);
+  const projects = useSelector((state: RootState) => state.projects);
   const dropdownOpenId = useSelector((state: RootState) => state.dropDown);
   const isDropDownOpen = dropdownOpenId === id;
   const cardEditingId = useSelector((state: RootState) => state.cardEditingId);
@@ -55,21 +56,12 @@ const ActionsProjectCard = ({ id }: CardActionProps) => {
     dispatch(setDropDown(id));
   };
 
-  const setPriority = (priority: PriorityType) => {
-    const newCards: CardType[] = cards.map((item) => {
-      if (item?.id === id) {
-        return { ...item, priority: priority };
-      } else return item;
-    });
-
-    dispatch(setCards(newCards));
-    dispatch(setDropDownClose());
-  };
-
   const deleteCard = () => {
-    const newCards: CardType[] = cards.filter((item) => item?.id !== id);
+    const newProjects: ProjectType[] = projects.filter(
+      (item) => item?.id !== id
+    );
 
-    dispatch(setCards(newCards));
+    dispatch(setProjects(newProjects));
     dispatch(setDropDownClose());
   };
 

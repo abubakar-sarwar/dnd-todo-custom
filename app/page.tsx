@@ -9,7 +9,7 @@ const TodoAppPage = () => {
 
   return (
     <div className="h-screen w-full bg-neutral-900 text-neutral-50">
-      <div className="fixed top-0 left-0 h-full p-4 w-[250px] bg-neutral-800 ">
+      <div className="fixed top-0 left-0 h-full w-[250px] bg-neutral-800">
         <ColumnProjects projects={projects} columnType="projects" />
       </div>
       <section className="ml-[260px]">
