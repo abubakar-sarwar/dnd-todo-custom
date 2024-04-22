@@ -126,7 +126,7 @@ const ColumnProjects = ({ columnType, projects }: ColumnProjectProps) => {
           onDrop={handleDragEnd}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
-          className={`h-full w-full transition-colors m-auto ${
+          className={`w-full transition-colors m-auto ${
             active ? "bg-neutral-800/50" : "bg-neutral-800/0"
           }`}
         >
