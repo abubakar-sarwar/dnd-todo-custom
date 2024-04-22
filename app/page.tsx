@@ -13,7 +13,7 @@ const TodoAppPage = () => {
         <ColumnProjects projects={projects} columnType="projects" />
       </div>
       <section className="ml-[260px]">
-        <div className="flex h-full w-full gap-5 px-4 py-10">
+        <div className="flex h-full min-h-[95vh] w-full gap-5 px-4 py-5">
           <Column
             title="Backlog"
             column="backlog"
