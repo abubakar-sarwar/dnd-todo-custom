@@ -2,6 +2,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "@/lib";
 import { CardType, ProjectType } from "@/types";
+import { setPriority } from "os";
+
+type priorityColors = {
+  low: string;
+  medium: string;
+  high: string;
+};
+
+type SetPriorityColorTypes = {
+  color: string;
+  type: string;
+};
 
 interface AuthState {
   projects: ProjectType[];
@@ -10,6 +22,9 @@ interface AuthState {
   dropDown: string;
   cardEditingId: string;
   dragType: string;
+  theme: string;
+  primary: string;
+  priorityColors: priorityColors;
 }
 
 const initialState: AuthState = {
@@ -19,6 +34,13 @@ const initialState: AuthState = {
   dropDown: "",
   cardEditingId: "",
   dragType: "",
+  theme: "",
+  primary: "",
+  priorityColors: {
+    low: "",
+    medium: "",
+    high: "",
+  },
 };
 
 export const Allslice = createSlice({
@@ -62,6 +84,24 @@ export const Allslice = createSlice({
     setDragType: (state, action: PayloadAction<string>) => {
       state.dragType = action.payload;
     },
+    setTheme: (state, action: PayloadAction<string>) => {
+      state.theme = action.payload;
+
+      if (
+        action.payload === "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        action.payload = "dark";
+      }
+      document.documentElement.setAttribute("class", action.payload);
+    },
+    setPrimary: (state, action: PayloadAction<string>) => {
+      state.primary = action.payload;
+    },
+    setPriorityColor: (state, action: PayloadAction<SetPriorityColorTypes>) => {
+      const { type, color } = action.payload;
+      state.priorityColors = { ...state.priorityColors, [type]: color };
+    },
   },
 });
 
@@ -75,6 +115,9 @@ export const {
   setSelectedProjectId,
   setProjects,
   setDragType,
+  setTheme,
+  setPrimary,
+  setPriorityColor,
 } = Allslice.actions;
 
 export default Allslice.reducer;

@@ -17,3 +17,17 @@
   background-color: #686868;
   border-radius: 2px;
 }
+
+@layer base {
+  :root {
+    --color-primary: 167 139 250;
+  }
+}
+
+body {
+  @apply dark:text-white dark:bg-neutral-900;
+}
+
+.area_height {
+  height: calc(100% - 36px);
+}

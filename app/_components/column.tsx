@@ -133,9 +133,9 @@ const Column = ({ title, headingColor, columnType, column }: ColumnProps) => {
   const filteredCards = cards.filter((c) => c.column === column);
 
   return (
-    <div className="min-w-56 w-full shrink grow">
+    <div className="w-full shrink grow">
       <div
-        className={`mb-3 flex items-center justify-between ${
+        className={`flex items-center justify-between ${
           selectedProjectId ? "" : "opacity-40 select-none"
         }`}
       >
@@ -148,7 +148,7 @@ const Column = ({ title, headingColor, columnType, column }: ColumnProps) => {
         onDrop={handleDragEnd}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        className={`h-full w-full transition-colors ${
+        className={`area_height w-full transition-colors ${
           active ? "bg-neutral-800/50" : "bg-neutral-800/0"
         }`}
       >

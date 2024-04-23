@@ -17,7 +17,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  whitelist: ["projects"],
+  whitelist: ["projects", "theme", "primary", "priorityColors"],
 };
 
 const persistedReducer = persistReducer(persistConfig, Allslice);

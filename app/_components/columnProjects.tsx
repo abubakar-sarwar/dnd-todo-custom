@@ -116,8 +116,8 @@ const ColumnProjects = ({ columnType, projects }: ColumnProjectProps) => {
   return (
     <div className="flex flex-col h-full">
       <div className="p-4 pb-2 flex items-center justify-between">
-        <h3 className="uppercase font-medium text-violet-400">Projects</h3>
-        <span className="rounded text-sm font-bold text-violet-400">
+        <h3 className="uppercase font-medium text-primary">Projects</h3>
+        <span className="rounded text-sm font-bold text-primary">
           {projects.length}
         </span>
       </div>
