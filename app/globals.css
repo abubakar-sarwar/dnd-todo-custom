@@ -21,6 +21,8 @@
 @layer base {
   :root {
     --color-primary: 167 139 250;
+    --color-priority-medium: 234 179 8;
+    --color-priority-high: 239 68 68;
   }
 }
 

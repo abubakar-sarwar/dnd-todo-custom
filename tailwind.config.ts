@@ -14,6 +14,9 @@ const config: Config = {
       },
       colors: {
         primary: "rgb(var(--color-primary) / <alpha-value>)",
+        "priority-low": "rgb(var(--color-priority-low) / <alpha-value>)",
+        "priority-medium": "rgb(var(--color-priority-medium) / <alpha-value>)",
+        "priority-high": "rgb(var(--color-priority-high) / <alpha-value>)",
       },
       borderColor: {
         primary: "rgb(var(--color-primary) / <alpha-value>)",

@@ -2,10 +2,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "@/lib";
 import { CardType, ProjectType } from "@/types";
-import { setPriority } from "os";
 
 type priorityColors = {
-  low: string;
   medium: string;
   high: string;
 };
@@ -37,7 +35,6 @@ const initialState: AuthState = {
   theme: "",
   primary: "",
   priorityColors: {
-    low: "",
     medium: "",
     high: "",
   },

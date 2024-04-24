@@ -46,12 +46,12 @@ const Card = ({
 
   const date = new Date(createdAt);
   const formattedDate = date.toLocaleString("en-US", {
-    day: "2-digit", // Numeric, 2-digit
-    month: "short", // Short month name
-    year: "numeric", // Numeric, 4-digit year
-    hour: "numeric", // Numeric hour
-    minute: "2-digit", // Numeric, 2-digit minute
-    hour12: true, // Use 12-hour time with AM/PM
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
   });
 
   return (
@@ -67,9 +67,9 @@ const Card = ({
           isEditing ? "border-primary" : "p-3 dark:border-neutral-700"
         } ${
           priority === "high"
-            ? "bg-red-500"
+            ? "bg-priority-high"
             : priority === "medium"
-            ? "bg-yellow-500"
+            ? "bg-priority-medium"
             : "bg-white dark:bg-neutral-800"
         }`}
       >

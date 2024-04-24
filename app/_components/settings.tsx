@@ -6,6 +6,8 @@ import { FaLaptop } from "react-icons/fa";
 import { FiMoon, FiSettings, FiSun, FiX } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { CgColorPicker } from "react-icons/cg";
+import PriorityColorSettings from "./priorityColorSettings";
+import { hexToRgb } from "@/utils";
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -14,6 +16,9 @@ const Settings = () => {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const currentTheme = useSelector((state: RootState) => state.theme);
+  const priorityColors = useSelector(
+    (state: RootState) => state.priorityColors
+  );
   const currentPrimary = useSelector((state: RootState) => state.primary);
 
   useEffect(() => {
@@ -47,6 +52,14 @@ const Settings = () => {
       "--color-primary",
       currentPrimary
     );
+    document.documentElement.style.setProperty(
+      "--color-priority-medium",
+      priorityColors.medium
+    );
+    document.documentElement.style.setProperty(
+      "--color-priority-high",
+      priorityColors.high
+    );
     document.documentElement.setAttribute("class", current);
   }, []);
 
@@ -61,18 +74,7 @@ const Settings = () => {
     if (color) changePrimary(color);
   };
 
-  const hexToRgb = (hex: string) => {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result
-      ? `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(
-          result[3],
-          16
-        )}`
-      : null;
-  };
-
   const changePrimary = (color: string) => {
-    console.log(color);
     document.documentElement.style.setProperty("--color-primary", color);
     dispatch(setPrimary(color));
   };
@@ -192,6 +194,7 @@ const Settings = () => {
               </button>
             </div>
           </div>
+          <PriorityColorSettings />
         </div>
       </div>
     </>
