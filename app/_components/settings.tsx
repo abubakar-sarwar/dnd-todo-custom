@@ -1,7 +1,7 @@
 "use client";
 import { RootState } from "@/lib";
 import { setPrimary, setTheme } from "@/lib/slices/Allslices";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { FaLaptop } from "react-icons/fa";
 import { FiMoon, FiSettings, FiSun, FiX } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,9 +10,29 @@ import { CgColorPicker } from "react-icons/cg";
 const Settings = () => {
   const dispatch = useDispatch();
 
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const currentTheme = useSelector((state: RootState) => state.theme);
   const currentPrimary = useSelector((state: RootState) => state.primary);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     let current = currentTheme;
@@ -76,6 +96,7 @@ const Settings = () => {
         </button>
       </div>
       <div
+        ref={menuRef}
         className={`w-[400px] duration-300 flex flex-col fixed top-0 bottom-0 z-20 bg-white dark:bg-neutral-800 ${
           isOpen ? "right-0" : "right-[-400px]"
         }`}
