@@ -8,7 +8,7 @@ const TodoAppPage = () => {
   const cards = useSelector((state: RootState) => state.cards);
 
   return (
-    <div className="h-screen w-full bg-[#ebebeb] dark:bg-neutral-900 dark:text-neutral-50">
+    <div className="h-screen w-full bg-[#f0f0f0] dark:bg-neutral-900 dark:text-neutral-50">
       <div className="fixed top-0 left-0 h-full w-[250px] bg-white dark:bg-neutral-800">
         <ColumnProjects projects={projects} columnType="projects" />
       </div>

@@ -68,34 +68,31 @@ const CardProject = ({
         }}
         onDragEnd={() => setIsdragging(false)}
         onClick={() => dispatch(setSelectedProjectId(id))}
-        className={`relative cursor-pointer rounded border border-neutral-700 bg-neutral-800 group active:cursor-grabbing ${
-          isEditing ? "" : "p-3"
-        } ${selectedProjectId === id ? "border-violet-400" : ""}`}
+        className={`relative cursor-pointer rounded border bg-white dark:bg-neutral-800 group active:cursor-grabbing ${
+          isEditing ? "border-primary" : "p-3 dark:border-neutral-700"
+        } ${selectedProjectId === id ? "border-primary" : ""}`}
       >
         {!isdragging && <ActionsProjectCard id={id} />}
         {isEditing ? (
-          <form
-            onSubmit={handleSubmit}
-            className="p-3 border-violet-400 bg-violet-400/20"
-          >
+          <form onSubmit={handleSubmit} className="p-3 bg-primary/20">
             <input
               onChange={(e) => setText(e.target.value)}
               autoFocus
               value={text}
               placeholder="Add new task..."
-              className="w-full rounded text-sm bg-transparent text-neutral-50 placeholder-violet-300 focus:outline-0"
+              className="w-full rounded text-sm bg-transparent placeholder-primary focus:outline-0"
             />
             <div className="mt-1.5 flex items-center justify-end gap-1.5">
               <button
                 type="button"
                 onClick={() => dispatch(setCardEditingId(""))}
-                className="px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-50"
+                className="px-3 py-1.5 text-xs transition-colors text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-50"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="flex items-center gap-1.5 rounded bg-neutral-50 px-3 py-1.5 text-xs text-neutral-950 transition-colors hover:bg-neutral-300"
+                className="flex items-center gap-1.5 rounded px-3 py-1.5 text-xs text-neutral-950 transition-colors bg-neutral-50 hover:bg-neutral-300"
               >
                 <span>Update</span>
                 <FiEdit3 />
@@ -103,7 +100,7 @@ const CardProject = ({
             </div>
           </form>
         ) : (
-          <p className="text-sm text-neutral-100">{project}</p>
+          <p className="text-sm">{project}</p>
         )}
       </div>
     </>

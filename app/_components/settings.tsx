@@ -10,7 +10,7 @@ import { CgColorPicker } from "react-icons/cg";
 const Settings = () => {
   const dispatch = useDispatch();
 
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const currentTheme = useSelector((state: RootState) => state.theme);
   const currentPrimary = useSelector((state: RootState) => state.primary);
 

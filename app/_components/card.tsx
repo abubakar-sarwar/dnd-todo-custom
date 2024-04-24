@@ -63,39 +63,36 @@ const Card = ({
           setIsdragging(true);
           handleDragStart(e, { title, id, column });
         }}
-        className={`relative cursor-grab rounded border border-neutral-700 group active:cursor-grabbing ${
-          isEditing ? "" : "p-3"
+        className={`relative cursor-grab rounded border group active:cursor-grabbing ${
+          isEditing ? "border-primary" : "p-3 dark:border-neutral-700"
         } ${
           priority === "high"
             ? "bg-red-500"
             : priority === "medium"
             ? "bg-yellow-500"
-            : "bg-neutral-800"
+            : "bg-white dark:bg-neutral-800"
         }`}
       >
         {!isdragging && <ActionsCard id={id} />}
         {isEditing ? (
-          <form
-            onSubmit={handleSubmit}
-            className="p-3 border-violet-400 bg-violet-400/20"
-          >
+          <form onSubmit={handleSubmit} className="p-3 bg-primary/20">
             <textarea
               onChange={(e) => setText(e.target.value)}
               autoFocus
               value={text}
               placeholder="Add new task..."
-              className="min-h-20 w-full rounded text-sm bg-transparent text-neutral-50 placeholder-violet-300 focus:outline-0"
+              className="min-h-20 w-full rounded text-sm bg-transparent placeholder-primary focus:outline-0"
             />
             <div className="mt-1.5 flex items-center justify-end gap-1.5">
               <button
                 onClick={() => dispatch(setCardEditingId(""))}
-                className="px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-50"
+                className="px-3 py-1.5 text-xs transition-colors text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-50"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="flex items-center gap-1.5 rounded bg-neutral-50 px-3 py-1.5 text-xs text-neutral-950 transition-colors hover:bg-neutral-300"
+                className="flex items-center gap-1.5 rounded px-3 py-1.5 text-xs text-neutral-950 transition-colors bg-neutral-50 hover:bg-neutral-300"
               >
                 <span>Update</span>
                 <FiEdit3 />
@@ -103,7 +100,7 @@ const Card = ({
             </div>
           </form>
         ) : (
-          <p className="text-sm text-neutral-100">{title}</p>
+          <p className="text-sm">{title}</p>
         )}
       </div>
       <span className="flex justify-end mt-[2px] text-[10px] text-neutral-600">

@@ -81,12 +81,12 @@ const ActionsProjectCard = ({ id }: CardActionProps) => {
       >
         <ul
           ref={menuRef}
-          className="text-sm whitespace-nowrap py-1.5 rounded-md border border-neutral-700 bg-neutral-800"
+          className="text-sm whitespace-nowrap py-1.5 rounded-md border dark:border-neutral-700 bg-white dark:bg-neutral-800"
         >
           <li>
             <button
               onClick={setEditing}
-              className="pl-3 pr-7 w-full py-1 flex items-center space-x-2 duration-100 hover:bg-neutral-900"
+              className="pl-3 pr-7 w-full py-1 flex items-center space-x-2 duration-100 hover:bg-[#f0f0f0] dark:hover:bg-neutral-900"
             >
               <FiEdit3 />
               <span>Rename</span>
@@ -95,7 +95,7 @@ const ActionsProjectCard = ({ id }: CardActionProps) => {
           <li>
             <button
               onClick={deleteCard}
-              className="pl-3 pr-7 w-full py-1 flex items-center space-x-2 duration-100 hover:bg-neutral-900"
+              className="pl-3 pr-7 w-full py-1 flex items-center space-x-2 duration-100 hover:bg-[#f0f0f0] dark:hover:bg-neutral-900"
             >
               <FiTrash2 />
               <span>Delete</span>
