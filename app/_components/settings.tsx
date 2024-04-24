@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/lib";
-import { setPrimary, setTheme } from "@/lib/slices/Allslices";
+import { setPrimary, setPriorityColor, setTheme } from "@/lib/slices/Allslices";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { FaLaptop } from "react-icons/fa";
 import { FiMoon, FiSettings, FiSun, FiX } from "react-icons/fi";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CgColorPicker } from "react-icons/cg";
 import PriorityColorSettings from "./priorityColorSettings";
 import { hexToRgb } from "@/utils";
+import { RxReset } from "react-icons/rx";
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -80,12 +81,30 @@ const Settings = () => {
   };
 
   const colors = [
-    "115 103 240",
+    "167 139 250",
     "13 147 148",
     "255 171 29",
     "235 61 99",
     "32 146 236",
   ];
+
+  const resetColors = () => {
+    document.documentElement.style.setProperty(
+      "--color-primary",
+      "167 139 250"
+    );
+    document.documentElement.style.setProperty(
+      "--color-priority-medium",
+      "234 179 8"
+    );
+    document.documentElement.style.setProperty(
+      "--color-priority-high",
+      "239 68 68"
+    );
+    dispatch(setPrimary("167 139 250"));
+    dispatch(setPriorityColor({ color: "234 179 8", type: "medium" }));
+    dispatch(setPriorityColor({ color: "239 68 68", type: "high" }));
+  };
 
   return (
     <>
@@ -108,12 +127,20 @@ const Settings = () => {
             <h3 className="uppercase font-medium">Theme Customizer</h3>
             <p className="text-sm">Customize & Preview in Real Time</p>
           </div>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="rounded text-2xl font-bold"
-          >
-            <FiX />
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={resetColors}
+              className="rounded text-2xl font-bold"
+            >
+              <RxReset />
+            </button>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="rounded text-2xl font-bold"
+            >
+              <FiX />
+            </button>
+          </div>
         </div>
         <div className="px-4 h-full overflow-y-auto pt-5">
           <div>
