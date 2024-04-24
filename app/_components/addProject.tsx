@@ -63,7 +63,7 @@ const AddProject = () => {
       ) : (
         <button
           onClick={() => setAdding(true)}
-          className="flex w-full justify-end items-center gap-1.5 py-1.5 text-xs dark:text-neutral-400 transition-colors hover:text-neutral-50"
+          className="flex w-full justify-end items-center gap-1.5 py-1.5 text-xs transition-colors text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-50"
         >
           <span>Add project</span>
           <FiPlus />

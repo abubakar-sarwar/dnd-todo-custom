@@ -56,7 +56,7 @@ const AddCard = ({ column }: AddCardProps) => {
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 rounded px-3 py-1.5 text-xs bg-neutral-50 hover:bg-neutral-300"
+              className="flex items-center gap-1.5 rounded bg-neutral-600 hover:bg-neutral-800 dark:bg-neutral-50 px-3 py-1.5 text-xs text-neutral-50 dark:text-neutral-950 transition-colors dark:hover:bg-neutral-300"
             >
               <span>Add</span>
               <FiPlus />
