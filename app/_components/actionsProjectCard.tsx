@@ -6,14 +6,10 @@ import {
   setDropDown,
   setDropDownClose,
   setProjects,
+  setSelectedProjectId,
 } from "@/lib/slices/Allslices";
-import { CardActionProps, CardType, PriorityType, ProjectType } from "@/types";
+import { CardActionProps, ProjectType } from "@/types";
 import { useEffect, useRef } from "react";
-import {
-  FcHighPriority,
-  FcLowPriority,
-  FcMediumPriority,
-} from "react-icons/fc";
 import { FiEdit3, FiMoreVertical, FiTrash2 } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -26,6 +22,9 @@ const ActionsProjectCard = ({ id }: CardActionProps) => {
   const isDropDownOpen = dropdownOpenId === id;
   const cardEditingId = useSelector((state: RootState) => state.cardEditingId);
   const isEditing = cardEditingId === id;
+  const selectedProjectId = useSelector(
+    (state: RootState) => state.selectedProjectId
+  );
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -60,6 +59,10 @@ const ActionsProjectCard = ({ id }: CardActionProps) => {
     const newProjects: ProjectType[] = projects.filter(
       (item) => item?.id !== id
     );
+
+    if (id === selectedProjectId) {
+      dispatch(setSelectedProjectId(""));
+    }
 
     dispatch(setProjects(newProjects));
     dispatch(setDropDownClose());

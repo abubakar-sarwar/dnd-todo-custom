@@ -73,6 +73,8 @@ export const Allslice = createSlice({
 
       if (project) {
         state.cards = project.todo;
+      } else {
+        state.cards = [];
       }
     },
     setProjects: (state, action: PayloadAction<ProjectType[]>) => {

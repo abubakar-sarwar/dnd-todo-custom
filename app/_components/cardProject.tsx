@@ -1,17 +1,15 @@
 "use client";
 import { FormEvent, useState } from "react";
-import { CardProjectProps, CardType, ProjectType } from "@/types";
+import { CardProjectProps, ProjectType } from "@/types";
 import DropIndicator from "./dropIndicator";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib";
 import {
   setCardEditingId,
-  setCards,
   setProjects,
   setSelectedProjectId,
 } from "@/lib/slices/Allslices";
 import { FiEdit3 } from "react-icons/fi";
-import ActionsCard from "./actionsCard";
 import ActionsProjectCard from "./actionsProjectCard";
 
 const CardProject = ({
