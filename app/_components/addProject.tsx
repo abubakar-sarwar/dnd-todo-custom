@@ -32,6 +32,7 @@ const AddProject = () => {
     dispatch(setProjects(newProjects));
 
     setAdding(false);
+    setText("");
   };
 
   return (
