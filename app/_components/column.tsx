@@ -136,7 +136,7 @@ const Column = ({ title, headingColor, columnType, column }: ColumnProps) => {
     <div className="w-full shrink grow">
       <div
         className={`flex items-center justify-between ${
-          selectedProjectId ? "" : "opacity-40 select-none"
+          selectedProjectId !== "" ? "" : "opacity-40 select-none"
         }`}
       >
         <h3 className={`uppercase font-medium ${headingColor}`}>{title}</h3>

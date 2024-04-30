@@ -21,7 +21,7 @@ const AddProject = () => {
     const dateString = date.toISOString();
 
     const newProject: ProjectType = {
-      id: Math.random().toString(),
+      id: `${projects?.length + 1}`,
       project: text.trim(),
       todo: [],
       createdAt: dateString,

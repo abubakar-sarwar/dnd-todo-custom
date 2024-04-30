@@ -2,7 +2,6 @@
 import { RootState } from "@/lib";
 import {
   setCardEditingId,
-  setCards,
   setDropDown,
   setDropDownClose,
   setProjects,

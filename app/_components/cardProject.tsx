@@ -55,6 +55,9 @@ const CardProject = ({
     hour12: true, // Use 12-hour time with AM/PM
   });
 
+  const dropdownOpenId = useSelector((state: RootState) => state.dropDown);
+  const isDropDownOpen = dropdownOpenId === id;
+
   return (
     <>
       <DropIndicator beforeId={id} column="projects" />
@@ -65,7 +68,11 @@ const CardProject = ({
           handleDragStart(e, { project, id, column: "projects" });
         }}
         onDragEnd={() => setIsdragging(false)}
-        onClick={() => dispatch(setSelectedProjectId(id))}
+        onClick={() => {
+          if (!isDropDownOpen) {
+            dispatch(setSelectedProjectId(id));
+          }
+        }}
         className={`relative cursor-pointer rounded border bg-white dark:bg-neutral-800 group active:cursor-grabbing ${
           isEditing ? "border-primary" : "p-3 dark:border-neutral-700"
         } ${selectedProjectId === id ? "border-primary" : ""}`}
