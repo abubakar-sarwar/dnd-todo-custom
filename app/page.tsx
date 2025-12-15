@@ -9,10 +9,10 @@ const TodoAppPage = () => {
 
   return (
     <div className="h-screen w-full bg-[#f0f0f0] dark:bg-neutral-900 dark:text-neutral-50">
-      <div className="fixed top-0 left-0 h-full w-[250px] bg-white dark:bg-neutral-800">
+      <div className="fixed top-0 left-0 h-full w-62.5 bg-white dark:bg-neutral-800">
         <ColumnProjects projects={projects} columnType="projects" />
       </div>
-      <section className="ml-[260px]">
+      <section className="ml-65">
         <div className="flex h-full min-h-[95vh] w-full gap-5 px-4 py-5">
           <Column
             title="Backlog"

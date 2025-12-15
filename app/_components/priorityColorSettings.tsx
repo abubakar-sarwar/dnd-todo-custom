@@ -36,7 +36,7 @@ const PriorityColorSettings = () => {
           <tr>
             <td className="pr-7 py-2">Medium Priority Color</td>
             <td className="py-1.5">
-              <label className="relative block size-[35px] rounded-md p-1 order border border-priority-medium">
+              <label className="relative block size-8.75 rounded-md p-1 order border border-priority-medium">
                 <div className="size-full rounded-md flex items-center justify-center bg-priority-medium">
                   <CgColorPicker />
                   <input
@@ -51,7 +51,7 @@ const PriorityColorSettings = () => {
           <tr>
             <td className="pr-7 py-2">High Priority Color</td>
             <td className="py-1.5">
-              <label className="relative block size-[35px] rounded-md p-1 order border border-priority-high">
+              <label className="relative block size-8.75 rounded-md p-1 order border border-priority-high">
                 <div className="size-full rounded-md flex items-center justify-center bg-priority-high">
                   <CgColorPicker />
                   <input

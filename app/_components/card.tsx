@@ -103,7 +103,7 @@ const Card = ({
           <p className="text-sm">{title}</p>
         )}
       </div>
-      <span className="flex justify-end mt-[2px] text-[10px] text-neutral-600">
+      <span className="flex justify-end mt-0.5 text-[10px] text-neutral-600">
         {formattedDate}
       </span>
     </>

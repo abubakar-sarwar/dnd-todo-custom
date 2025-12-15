@@ -118,8 +118,8 @@ const Settings = () => {
       </div>
       <div
         ref={menuRef}
-        className={`w-[400px] duration-300 flex flex-col fixed top-0 bottom-0 z-20 bg-white dark:bg-neutral-800 ${
-          isOpen ? "right-0" : "right-[-400px]"
+        className={`w-100 duration-300 flex flex-col fixed top-0 bottom-0 z-20 bg-white dark:bg-neutral-800 ${
+          isOpen ? "right-0" : "-right-100"
         }`}
       >
         <div className="p-4 flex items-center justify-between border-b">
@@ -150,20 +150,20 @@ const Settings = () => {
                 <button
                   key={index}
                   onClick={() => changePrimary(item)}
-                  className={`size-[40px] rounded-[10px] p-[6px] order border ${
+                  className={`size-10 rounded-[10px] p-1.5 order border ${
                     currentPrimary === item
                       ? "border-primary"
                       : "dark:border-neutral-700"
                   }`}
                 >
                   <div
-                    className="size-full rounded-[6px]"
+                    className="size-full rounded-md"
                     style={{ backgroundColor: `rgb(${item})` }}
                   />
                 </button>
               ))}
               <label
-                className={`relative block size-[40px] rounded-md p-1 order border ${
+                className={`relative block size-10 rounded-md p-1 order border ${
                   !colors.includes(currentPrimary)
                     ? "border-primary"
                     : "dark:border-neutral-700"
