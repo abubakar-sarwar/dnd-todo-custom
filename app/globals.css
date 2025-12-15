@@ -1,6 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --animation-spin-slow: spin 3s linear infinite;
+  
+  --color-primary: rgb(var(--color-primary));
+  --color-priority-low: rgb(var(--color-priority-low));
+  --color-priority-medium: rgb(var(--color-priority-medium));
+  --color-priority-high: rgb(var(--color-priority-high));
+}
 
 /* ===== Scrollbar CSS ===== */
 
